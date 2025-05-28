@@ -14,7 +14,7 @@ layout = st.query_params.get("layout", "centered")
 if layout not in ["wide", "centered"]:
     layout = "centered"
 
-st.set_page_config(page_title="Comparador de Execuções - Personal", layout=layout)
+st.set_page_config(page_title="Sonho de jogador", layout=layout)
 
 with st.sidebar:
     st.write(f"Layout atual: **{layout.upper()}**")
