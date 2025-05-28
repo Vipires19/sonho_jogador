@@ -1,0 +1,12 @@
+streamlit==1.32.0
+openai==1.58.1
+streamlit-authenticator
+setuptools
+boto3
+pandas
+ipykernel
+python-dotenv
+unidecode
+typing
+requests
+pymongo
