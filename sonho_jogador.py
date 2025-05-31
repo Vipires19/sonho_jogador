@@ -118,7 +118,7 @@ def show_admin_dashboard():
         if st.button("👁️ Visualizar jogador"):
             st.session_state["pagina_atual"] = "visualiza"
 
-        if st.button("📊 Placar"):
+        if st.button("📊 Classificação"):
             st.session_state["pagina_atual"] = "placar"
 
         if st.button("📊 Atualizar Resultados"):
@@ -184,7 +184,7 @@ def show_admin_dashboard():
         st.dataframe(df)
         col1,col2,col3 = st.columns(3)
         col1.metric(label='🏆 Jogador com mais pontos', value=df['Jogador'].values[0], delta=f"{df['Pontos'].values[0]} pontos")
-        if len(df[Jogador]) > 1:
+        if len(df[Jogador].values) > 1:
             col2.metric(label='🏆 Segundo com mais pontos', value=df['Jogador'].values[1], delta=f"{df['Pontos'].values[1]} pontos",delta_color="inverse")
             col3.metric(label='🏆 Terceiro com mais pontos', value=df['Jogador'].values[2], delta=f"{df['Pontos'].values[2]} pontos",delta_color="inverse")
             st.metric("Último campeão:", campeoes['campeao'].values[0])
