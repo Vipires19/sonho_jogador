@@ -184,16 +184,17 @@ def show_admin_dashboard():
         st.dataframe(df)
         col1,col2,col3 = st.columns(3)
         col1.metric(label='🏆 Jogador com mais pontos', value=df['Jogador'].values[0], delta=f"{df['Pontos'].values[0]} pontos")
-        col2.metric(label='🏆 Segundo com mais pontos', value=df['Jogador'].values[1], delta=f"{df['Pontos'].values[1]} pontos",delta_color="inverse")
-        col3.metric(label='🏆 Terceiro com mais pontos', value=df['Jogador'].values[2], delta=f"{df['Pontos'].values[2]} pontos",delta_color="inverse")
-        st.metric("Último campeão:", campeoes['campeao'].values[0])
-
-        st.divider()
-        st.title("⚽ Resultado dos Jogos")
-        jogos = list(coll_resultados.find({}, {"_id": 0}))
-        jogo = pd.DataFrame(data= jogos, columns=['data', 'time1',  'resultado1', 'resultado2', 'time2'])
-        jogo.rename(columns={'data':'Data do jogo', 'time1': 'Time A', 'time2': 'Time B', 'resultado1': 'Gols A', 'resultado2': 'Gols B'}, inplace=True)
-        st.dataframe(jogo)
+        if len(df[jogador]) > 1:
+            col2.metric(label='🏆 Segundo com mais pontos', value=df['Jogador'].values[1], delta=f"{df['Pontos'].values[1]} pontos",delta_color="inverse")
+            col3.metric(label='🏆 Terceiro com mais pontos', value=df['Jogador'].values[2], delta=f"{df['Pontos'].values[2]} pontos",delta_color="inverse")
+            st.metric("Último campeão:", campeoes['campeao'].values[0])
+    
+            st.divider()
+            st.title("⚽ Resultado dos Jogos")
+            jogos = list(coll_resultados.find({}, {"_id": 0}))
+            jogo = pd.DataFrame(data= jogos, columns=['data', 'time1',  'resultado1', 'resultado2', 'time2'])
+            jogo.rename(columns={'data':'Data do jogo', 'time1': 'Time A', 'time2': 'Time B', 'resultado1': 'Gols A', 'resultado2': 'Gols B'}, inplace=True)
+            st.dataframe(jogo)
 
     if st.session_state["pagina_atual"] == "resultados":
         st.title("📝 Atualizar Resultados da Rodada")
