@@ -14,7 +14,7 @@ layout = st.query_params.get("layout", "centered")
 if layout not in ["wide", "centered"]:
     layout = "centered"
 
-st.set_page_config(page_title="Sonho de jogador", layout=layout)
+st.set_page_config(page_title="DOMINGOU FC", layout=layout)
 
 with st.sidebar:
     st.write(f"Layout atual: **{layout.upper()}**")
@@ -129,7 +129,7 @@ def show_admin_dashboard():
 
     # Conteúdo principal com base na seleção
     if st.session_state["pagina_atual"] == "home":
-        st.title("🏆 Sonho de jogador - Campeonato")
+        st.title("🏆 DOMINGOU FC")
         st.header(f"Bem-vindo, {st.session_state['name']}")
         jogadores = listar_jogadores()
         total_jogadores = jogadores['nome'].value_counts().sum()
@@ -328,7 +328,7 @@ def show_player_dashboard():
 
     # Conteúdo principal com base na seleção
     if st.session_state["pagina_atual"] == "home":
-        st.title("🏆 Sonho de jogador - Campeonato")
+        st.title("🏆 DOMINGOU FC")
         st.header(f"Bem-vindo, {st.session_state['name']}")
         jogadores = listar_jogadores()
         jogador = jogadores[jogadores['nome'] == st.session_state['name']]
